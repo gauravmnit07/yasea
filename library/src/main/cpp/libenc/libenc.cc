@@ -2,6 +2,7 @@
 #include <string.h>
 #include <libyuv.h>
 #include <x264.h>
+#include <string.h>
 
 #include <android/log.h>
 
