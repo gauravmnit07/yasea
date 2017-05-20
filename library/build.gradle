@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven' // ADD THIS
-
 group='com.shubhapp.yasea'
 version ='2.5.2'
 
