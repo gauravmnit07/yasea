@@ -32,13 +32,15 @@ public class SrsPublisher {
     private SrsMp4Muxer mMp4Muxer;
     private SrsEncoder mEncoder;
 
+    private boolean isPublishingPaused;
+
     public SrsPublisher(SrsCameraView view) {
         mCameraView = view;
         mCameraView.setPreviewCallback(new SrsCameraView.PreviewCallback() {
             @Override
             public void onGetRgbaFrame(byte[] data, int width, int height) {
                 calcSamplingFps();
-                if (!sendAudioOnly) {
+                if (!sendAudioOnly && !isPublishingPaused) {
                     mEncoder.onGetRgbaFrame(data, width, height);
                 }
             }
@@ -93,7 +95,9 @@ public class SrsPublisher {
                 android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_AUDIO);
                 mic.startRecording();
                 while (!Thread.interrupted()) {
-                    if (sendVideoOnly) {
+                    if (isPublishingPaused) {
+                        // do nothing
+                    } else if (sendVideoOnly) {
                         mEncoder.onGetPcmFrame(mPcmBuffer, mPcmBuffer.length);
                         try {
                             // This is trivial...
@@ -195,6 +199,14 @@ public class SrsPublisher {
         if (mMp4Muxer != null) {
             mMp4Muxer.resume();
         }
+    }
+    public void pausePublish() {
+        isPublishingPaused = true;
+
+    }
+
+    public void resumePublish() {
+        isPublishingPaused = false;
     }
 
     public void switchToSoftEncoder() {
