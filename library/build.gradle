@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
-group='com.sprinklr.yasea'
-version ='2.5.4'
+group='com.github.gauravmnit07'
+version ='2.5.5'
 
 android {
     compileSdkVersion 26
