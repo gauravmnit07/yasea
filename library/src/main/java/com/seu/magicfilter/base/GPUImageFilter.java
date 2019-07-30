@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.seu.magicfilter.base.gpuimage;
+package com.seu.magicfilter.base;
 
 import android.content.Context;
 import android.graphics.PointF;

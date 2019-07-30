@@ -12,7 +12,7 @@ import android.opengl.Matrix;
 import android.util.AttributeSet;
 import android.view.Surface;
 
-import com.seu.magicfilter.base.gpuimage.GPUImageFilter;
+import com.seu.magicfilter.base.GPUImageFilter;
 import com.seu.magicfilter.utils.MagicFilterFactory;
 import com.seu.magicfilter.utils.MagicFilterType;
 import com.seu.magicfilter.utils.OpenGLUtils;
